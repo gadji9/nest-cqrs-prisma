@@ -3,7 +3,7 @@ import { UserService } from './users.service';
 import {Users} from "@prisma/client"
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { GetUserQuery } from './GetUser.query';
-import { CreateUSerCommand } from './CreateUser.command';
+import { CreateUserCommand } from './сreate-user.command';
 
 @Controller('users')
 export class UsersController {
@@ -12,7 +12,7 @@ export class UsersController {
 
     @Post()
     async signupUser(
-      @Body() command: CreateUSerCommand,
+      @Body() command: CreateUserCommand,
     ): Promise<Users> {
       console.log(command)
       return this.commandBus.execute(
